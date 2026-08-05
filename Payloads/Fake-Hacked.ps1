@@ -22,7 +22,7 @@ function Show-ProgressBox {
     Write-Host ""
     # Die ASCII-Box
     Write-Host "+--------------------------------------------------------+" -ForegroundColor Green
-    Write-Host "|                  HACKING IN PROGRESS                   |" -ForegroundColor Green
+    Write-Host "|                  BREACHING SYSTEM...                   |" -ForegroundColor Green
     Write-Host "|                                                        |" -ForegroundColor Green
 
     # Ladebalken berechnen (Gesamtlänge = 50 Zeichen)
@@ -55,11 +55,11 @@ Start-Sleep -Milliseconds 500
 Clear-Host
 Write-Host ""
 Write-Host "========================================================" -ForegroundColor Red
-Write-Host "               >>> SYSTEM HACKED >:) <<<                " -ForegroundColor Red
+Write-Host "               >>> SYSTEM HACKED <<<                " -ForegroundColor Red
 Write-Host "========================================================" -ForegroundColor Red
 Write-Host ""
-Write-Host " Zugriff gewährt. Alle Daten erfolgreich kompromittiert." -ForegroundColor Gray
+Write-Host " The System has been Breached, Enjoy ! <3" -ForegroundColor Gray
 Write-Host ""
 
 # Das Fenster offen halten
-Start-Sleep -Seconds 6
+Start-Sleep -Seconds 5
