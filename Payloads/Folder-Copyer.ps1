@@ -3,7 +3,7 @@ $userFolder = $env:USERPROFILE
 
 # 2. TO CONFIGURE: Which folder do you want to copy? 
 # Example: The current user's "Documents" folder
-$sourceDir = "$userFolder\Documents"
+$sourceDir = "$userFolder\Desktop\Test"
 
 # Alternatively, you can specify a custom path:
 # $sourceDir = "C:\YourPath\YourFolder"
